@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -12,29 +13,98 @@
       align-items: center;
       justify-content: center;
       font-family: Arial, sans-serif;
+      overflow: hidden;
     }
 
+    /* Caixa vermelha */
     .box {
       background: red;
-      padding: 20px 40px;
+      padding: 35px 70px;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,0,0,0.7);
+      animation: pulse 1.5s infinite;
+      z-index: 2;
     }
 
     .box span {
       color: white;
-      font-size: 22px;
+      font-size: 32px;
       font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Mensagem */
+    .mensagem {
+      display: none;
+      color: white;
+      text-align: center;
+      font-size: 30px;
+      line-height: 1.4;
+      max-width: 85%;
+      z-index: 2;
+    }
+
+    /* Corações */
+    .heart {
+      position: absolute;
+      top: -10%;
+      font-size: 24px;
+      animation: fall linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="box" onclick="abrir()">
+
+  <div class="box" id="botao" onclick="abrir()">
     <span>clique para abrir</span>
+  </div>
+
+  <div class="mensagem" id="mensagem">
+    💖<br><br>
+    já se passou um ano e agradeço por serem umas das melhores coisas que aconteceram na minha vida,<br>
+    <strong>drielle, yago e lelê</strong><br>
+    amo vocês amigos 💕
   </div>
 
   <script>
     function abrir() {
+      document.getElementById("botao").style.display = "none";
+      document.getElementById("mensagem").style.display = "block";
+      criarCoracoes();
+    }
+
+    function criarCoracoes() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+        heart.style.fontSize = (20 + Math.random() * 20) + "px";
+        document.body.appendChild(heart);
+      }
+    }
+  </script>
+
+</body>
+</html>    function abrir() {
       window.location.href = "mensagem.html";
     }
   </script>
