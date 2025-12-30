@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Clique para abrir</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .box {
+      background: red;
+      padding: 20px 40px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .box span {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="box" onclick="abrir()">
+    <span>clique para abrir</span>
+  </div>
+
+  <script>
+    function abrir() {
+      window.location.href = "mensagem.html";
+    }
+  </script>
+</body>
+</html>
