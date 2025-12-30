@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,11 +8,20 @@
       margin: 0;
       height: 100vh;
       background: black;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    /* Container central */
+    .container {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: Arial, sans-serif;
-      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+      z-index: 2;
     }
 
     /* Caixa vermelha */
@@ -24,14 +32,12 @@
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(255,0,0,0.7);
       animation: pulse 1.5s infinite;
-      z-index: 2;
     }
 
     .box span {
       color: white;
       font-size: 32px;
       font-weight: bold;
-      letter-spacing: 1px;
     }
 
     @keyframes pulse {
@@ -44,43 +50,41 @@
     .mensagem {
       display: none;
       color: white;
-      text-align: center;
       font-size: 30px;
       line-height: 1.4;
-      max-width: 85%;
-      z-index: 2;
+      max-width: 900px;
+      width: 100%;
+      word-wrap: break-word;
     }
 
     /* Corações */
     .heart {
       position: absolute;
       top: -10%;
-      font-size: 24px;
       animation: fall linear infinite;
       opacity: 0.8;
+      z-index: 1;
     }
 
     @keyframes fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      100% {
-        transform: translateY(110vh) rotate(360deg);
-      }
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
     }
   </style>
 </head>
 <body>
 
-  <div class="box" id="botao" onclick="abrir()">
-    <span>clique para abrir</span>
-  </div>
+  <div class="container">
+    <div class="box" id="botao" onclick="abrir()">
+      <span>clique para abrir</span>
+    </div>
 
-  <div class="mensagem" id="mensagem">
-    💖<br><br>
-    já se passou um ano e agradeço por serem umas das melhores coisas que aconteceram na minha vida,<br>
-    <strong>drielle, yago e lelê</strong><br>
-    amo vocês amigos 💕
+    <div class="mensagem" id="mensagem">
+      💖<br><br>
+      já se passou um ano e agradeço por serem umas das melhores coisas que aconteceram na minha vida,<br>
+      <strong>drielle, yago e lelê</strong><br>
+      amo vocês amigos 💕
+    </div>
   </div>
 
   <script>
@@ -97,16 +101,11 @@
         heart.innerText = "❤️";
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.animationDuration = (3 + Math.random() * 5) + "s";
-        heart.style.fontSize = (20 + Math.random() * 20) + "px";
+        heart.style.fontSize = (20 + Math.random() * 22) + "px";
         document.body.appendChild(heart);
       }
     }
   </script>
 
-</body>
-</html>    function abrir() {
-      window.location.href = "mensagem.html";
-    }
-  </script>
 </body>
 </html>
